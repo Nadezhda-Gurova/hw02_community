@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 
+from .models import Group
 from .models import Post
 
-from .models import Group
 
 def index(request):
     latest = Post.objects.order_by("-pub_date")[:11]
     return render(request, "index.html", {"posts": latest})
+
 
 # view-функция для страницы сообщества
 def group_posts(request, slug):
