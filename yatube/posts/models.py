@@ -21,6 +21,9 @@ class Post(models.Model):
     group = models.ForeignKey(Group, on_delete=models.SET_NULL,
                               blank=True, null=True, related_name="posts")
 
+    def __str__(self):
+        return self.text
+
     @property
     def pub_date_format(self):
         return self.pub_date.strftime('%d %b %Y')
